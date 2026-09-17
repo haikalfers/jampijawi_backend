@@ -14,8 +14,11 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:5173", // port default Vite
-    credentials: true,
+origin: [
+    "http://localhost:5173",
+    "https://jampijawi-frontend.vercel.app"
+],
+credentials: true,
 }));
 app.use(express.json());
 
