@@ -31,6 +31,13 @@ export const getRekomendasi = async (req, res) => {
       symptomIds
     );
 
+    if (results.length === 0) {
+      return res.json({
+        rekomendasi: [],
+        message: "Belum ada racikan yang terhubung dengan gejala yang dipilih",
+      });
+    }
+
     const rekomendasi = results.map((item) => ({
       ...item,
       bahan: typeof item.bahan === "string" ? JSON.parse(item.bahan) : item.bahan,
